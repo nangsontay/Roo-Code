@@ -13,6 +13,20 @@ export const bedrockDefaultPromptRouterModelId: BedrockModelId = "anthropic.clau
 // of the default prompt routers AWS enabled for GA of the promot router
 // feature.
 export const bedrockModels = {
+	"anthropic.claude-sonnet-4-7": {
+		maxTokens: 64_000,
+		contextWindow: 1_000_000, // Native 1M context window
+		supportsImages: true,
+		supportsPromptCache: true,
+		supportsReasoningBudget: true,
+		inputPrice: 3.0, // $3 per million input tokens (≤200K context)
+		outputPrice: 15.0, // $15 per million output tokens (≤200K context)
+		cacheWritesPrice: 3.75, // $3.75 per million tokens
+		cacheReadsPrice: 0.3, // $0.30 per million tokens
+		minTokensPerCachePoint: 1024,
+		maxCachePoints: 4,
+		cachableFields: ["system", "messages", "tools"],
+	},
 	"anthropic.claude-sonnet-4-5-20250929-v1:0": {
 		maxTokens: 64_000,
 		contextWindow: 200_000,
@@ -129,6 +143,20 @@ export const bedrockModels = {
 		outputPrice: 75.0,
 		cacheWritesPrice: 18.75,
 		cacheReadsPrice: 1.5,
+		minTokensPerCachePoint: 1024,
+		maxCachePoints: 4,
+		cachableFields: ["system", "messages", "tools"],
+	},
+	"anthropic.claude-opus-4-7-v1": {
+		maxTokens: 128_000,
+		contextWindow: 1_000_000, // Native 1M context window
+		supportsImages: true,
+		supportsPromptCache: true,
+		supportsReasoningBudget: true,
+		inputPrice: 5.0, // $5 per million input tokens (≤200K context)
+		outputPrice: 25.0, // $25 per million output tokens (≤200K context)
+		cacheWritesPrice: 6.25, // $6.25 per million tokens
+		cacheReadsPrice: 0.5, // $0.50 per million tokens
 		minTokensPerCachePoint: 1024,
 		maxCachePoints: 4,
 		cachableFields: ["system", "messages", "tools"],
@@ -510,16 +538,20 @@ export const BEDROCK_1M_CONTEXT_MODEL_IDS = [
 // - Claude Sonnet 4
 // - Claude Sonnet 4.5
 // - Claude Sonnet 4.6
+// - Claude Sonnet 4.7
 // - Claude Haiku 4.5
 // - Claude Opus 4.5
 // - Claude Opus 4.6
+// - Claude Opus 4.7
 export const BEDROCK_GLOBAL_INFERENCE_MODEL_IDS = [
 	"anthropic.claude-sonnet-4-20250514-v1:0",
 	"anthropic.claude-sonnet-4-5-20250929-v1:0",
 	"anthropic.claude-sonnet-4-6",
+	"anthropic.claude-sonnet-4-7",
 	"anthropic.claude-haiku-4-5-20251001-v1:0",
 	"anthropic.claude-opus-4-5-20251101-v1:0",
 	"anthropic.claude-opus-4-6-v1",
+	"anthropic.claude-opus-4-7-v1",
 ] as const
 
 // Amazon Bedrock Service Tier types
