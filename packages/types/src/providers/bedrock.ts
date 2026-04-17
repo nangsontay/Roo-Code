@@ -147,9 +147,9 @@ export const bedrockModels = {
 		maxCachePoints: 4,
 		cachableFields: ["system", "messages", "tools"],
 	},
-	"anthropic.claude-opus-4-7-v1": {
+	"anthropic.claude-opus-4-7": {
 		maxTokens: 128_000,
-		contextWindow: 1_000_000, // Native 1M context window
+		contextWindow: 1_000_000, // Default 200K, extendable to 1M with beta flag 'context-1m-2025-08-07'
 		supportsImages: true,
 		supportsPromptCache: true,
 		supportsReasoningBudget: true,
@@ -550,8 +550,9 @@ export const BEDROCK_GLOBAL_INFERENCE_MODEL_IDS = [
 	"anthropic.claude-sonnet-4-7",
 	"anthropic.claude-haiku-4-5-20251001-v1:0",
 	"anthropic.claude-opus-4-5-20251101-v1:0",
+	"anthropic.claude-opus-4-7",
 	"anthropic.claude-opus-4-6-v1",
-	"anthropic.claude-opus-4-7-v1",
+	"anthropic.claude-opus-4-7",
 ] as const
 
 // Amazon Bedrock Service Tier types
